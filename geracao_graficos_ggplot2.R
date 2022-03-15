@@ -57,3 +57,62 @@ ggplot(data = diamonds,
        x = "Característica", y = "Preço")
 
 ## Ajusta os títulos dos eixos e do gráfico.
+
+# Ajustando temas --------------------------------------------------------------------------------------------------------------------------
+
+## Exemplo 1:
+
+ggplot(data = diamonds,
+       aes(x = carat, y = price, color = cut)) +
+  geom_point() +
+  labs(title = "Gráfico de Dispersão",
+       x = "Característica", y = "Preço") +
+  theme_minimal()
+
+## Exemplo 2:
+
+ggplot(data = diamonds,
+       aes(x = carat, y = price, color = cut)) +
+  geom_point() +
+  labs(title = "Gráfico de Dispersão",
+       x = "Característica", y = "Preço") +
+  theme_bw()
+
+## Temas pré-configurados.
+
+# Configurando minigráficos ----------------------------------------------------------------------------------------------------------------
+
+ggplot(data = diamonds,
+       aes(x = carat, y = price, color = cut)) +
+  geom_point() +
+  labs(title = "Gráfico de Dispersão",
+       x = "Característica", y = "Preço") +
+  theme_minimal() +
+  facet_wrap(~ cut, ncol = 3) # Separar gráficos pela variável 'cut' em três colunas
+
+# Deletando legenda ------------------------------------------------------------------------------------------------------------------------
+
+ggplot(data = diamonds,
+       aes(x = carat, y = price, color = cut)) +
+  geom_point() +
+  labs(title = "Gráfico de Dispersão",
+       x = "Característica", y = "Preço") +
+  theme_minimal() +
+  facet_wrap(~ cut, ncol = 3) +
+  theme(legend.position = "none") # Posição da legenda configurada como 'none'
+
+# Exportando em formato amigável -----------------------------------------------------------------------------------------------------------
+
+ggplot(data = diamonds,
+       aes(x = carat, y = price, color = cut)) +
+  geom_point() +
+  labs(title = "Gráfico de Dispersão",
+       x = "Característica", y = "Preço") +
+  theme_minimal() +
+  facet_wrap(~ cut, ncol = 3) +
+  theme(legend.position = "none") # Posição da legenda configurada como 'none'
+
+ggsave("meu_grafico.png")
+
+## Salva a figura como png. Em ggsave() é possível definir a qualidade da imagem (dpi)
+## a largura, altura, etc.
